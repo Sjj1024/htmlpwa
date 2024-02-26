@@ -28,15 +28,15 @@
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Vite + Vue + TS</title>
-      <script type="module" crossorigin src="./assets/index-c6e3a6bd.js"></script>
-      <link rel="stylesheet" href="./assets/index-22c01233.css">
+      <script type="module" crossorigin src="./assets/index-33eaa8c7.js"></script>
+      <link rel="stylesheet" href="./assets/index-76604a74.css">
     </head>
     <body>
         <!-- <div id="app"></div> -->
-        <div>
-            <button id="installBtn">一键安装应用</button>
+        <div class="box" style="display: flex; flex-direction: column">
+            <button id="installBtn" style="margin: 20px">一键安装应用</button>
+            <div id="content" style="margin: 20px">判断环境</div>
         </div>
-        <div id="content">判断环境</div>
         
     </body>
     <script>
@@ -81,11 +81,12 @@
             document.referrer.includes('android-app://')
         console.log('panduan env:', isInStandaloneMode())
         if (isInStandaloneMode()) {
-            document.getElementById('content').innerHTML = '在pwa中打开'
+            document.getElementById('content').innerHTML = '在pwa中打开了'
             window.location.href = 'https://www.baidu.com/'
             // document.body.innerHTML = '是在pwa中打开的'
         } else {
-            document.getElementById('content').innerHTML = '请在pwa中打开'
+            document.getElementById('content').innerHTML =
+                '请在pwa中打开，在桌面快捷打开会自动跳转到baidu'
             // document.body.innerHTML = '请在pwa中打开'
         }
 
