@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link rel="manifest" href="./manifest.json" />
+        <!-- 自定义应用名称 -->
+        <meta name="application-name" content="百度一下" />
+        <!-- 自定义应用图标可用 -->
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="120x120"
+            href="https://g.csdnimg.cn/static/logo/favicon32.ico"
+        />
+        <!-- 全屏设置 -->
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimal-ui"
+        />
+
+        <!-- 网站开启对 web app 程序的支持 具体表现为去除浏览器地址栏和底部导航栏 ：先保存为桌面书签，然后通过书签打开即可生效-->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- 用来定义顶部状态栏的形式默认是default为白色 black为黑色 black-translucent为灰色半透明（会占据屏幕的约20px，不同的设备可能会有差异）-->
+        <!-- 在定义了apple-mobile-web-app-capable的前提下，设置状态栏的属性值apple-mobile-web-app-status-bar-style才有效； -->
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + Vue + TS</title>
+      <script type="module" crossorigin src="/assets/index-c6e3a6bd.js"></script>
+      <link rel="stylesheet" href="/assets/index-22c01233.css">
+    </head>
+    <body>
+        <!-- <div id="app"></div> -->
+        <div>
+            <button id="installBtn">一键安装应用</button>
+        </div>
+        <div id="content">判断环境</div>
+        
+    </body>
+    <script>
+        let deferredPrompt
+
+        window.addEventListener('beforeinstallprompt', (event) => {
+            // 阻止默认行为
+            event.preventDefault()
+
+            // 保存事件，稍后触发安装
+            deferredPrompt = event
+
+            // 显示自定义安装按钮
+            document.getElementById('installBtn').style.display = 'block'
+        })
+
+        // 监听按钮点击事件
+        document.getElementById('installBtn').addEventListener('click', () => {
+            console.log('点击安装pwa', deferredPrompt)
+            if (deferredPrompt) {
+                // 触发PWA安装
+                deferredPrompt.prompt()
+
+                // 监听安装结果
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('用户安装了PWA')
+                    } else {
+                        console.log('用户拒绝安装PWA')
+                    }
+
+                    // 重置事件
+                    deferredPrompt = null
+                })
+            }
+        })
+
+        // 判断安装环境
+        const isInStandaloneMode = () =>
+            window.matchMedia('(display-mode: standalone)').matches ||
+            window.navigator.standalone ||
+            document.referrer.includes('android-app://')
+        console.log('panduan env:', isInStandaloneMode())
+        if (isInStandaloneMode()) {
+            document.getElementById('content').innerHTML = '在pwa中打开'
+            window.location.href = 'https://www.baidu.com/'
+            // document.body.innerHTML = '是在pwa中打开的'
+        } else {
+            document.getElementById('content').innerHTML = '请在pwa中打开'
+            // document.body.innerHTML = '请在pwa中打开'
+        }
+
+        // window.onload = function () {
+        //     console.log('页面加载完了')
+        //     window.location.href = 'https://www.baidu.com/'
+        // }
+    </script>
+</html>
