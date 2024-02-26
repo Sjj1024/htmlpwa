@@ -10,7 +10,7 @@
     "display": "standalone",
     "icons": [
         {
-            "src": "https://sjj1024.github.io/htmlpwa/app.png",
+            "src": "./app.png",
             "sizes": "512x512"
         }
     ],
