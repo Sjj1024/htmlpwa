@@ -60,6 +60,7 @@ window.onload = () => {
   // 如果是，则进行页面跳转
   if (isInStandaloneMode()) {
     console.log('是在pwa中打开的')
+    document.getElementById('checkpwa').style.display = 'none'
     document.getElementById('frameBox').src = pwaLink
     document.getElementById('frameBox').style.display = 'block'
   } else {
