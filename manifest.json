@@ -1,24 +1,15 @@
 {
-    "lang": "en-us",
-    "name": "HadoPwa",
-    "short_name": "hado pwa",
-    "description": "A basic temperature converter application that can convert to and from Celsius, Kelvin, and Fahrenheit",
+    "name": "Fortune Tiger 2",
+    "short_name": "Fortune Tiger 2",
+    "description": "Fortune Tiger 2",
     "start_url": "/",
     "background_color": "#2f3d58",
     "theme_color": "#2f3d58",
-    "orientation": "any",
     "display": "standalone",
     "icons": [
         {
-            "src": "https://sjj1024.github.io/htmlpwa/app.png",
+            "src": "./logo.png",
             "sizes": "512x512"
-        }
-    ],
-    "screenshots": [
-        {
-            "src": "./apple-splash-1284-2778.jpg",
-            "sizes": "1284x2778",
-            "label": "The PWAmp mini-player widget"
         }
     ]
 }
