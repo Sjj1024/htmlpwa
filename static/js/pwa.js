@@ -11,7 +11,7 @@ const appName = 'Fortune Tiger'
 const pwaLink = 'https://www.cainiaojc.com/'
 // 底部菜单的跳转链接
 const menuLink = 'https://www.baidu.com'
-// loading逻辑
+// 用户开始安装倒计时逻辑
 const loading = () => {
   document.getElementById('loadbox').style.display = 'flex'
   document.getElementById('timer').innerHTML = showTime
