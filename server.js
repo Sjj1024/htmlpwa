@@ -3,6 +3,7 @@ var http = require('http')
 var fs = require('fs')
 var url = require('url')
 var path = require('path')
+const { hostname } = require('os')
 
 //定位静态目录的位置，根据请求找出对应的文件
 function staticRoot(staticPath, req, res) {
@@ -29,4 +30,6 @@ var server = http.createServer(function (req, res) {
   staticRoot(path.join(__dirname, '/'), req, res)
 })
 //监听8080端口
-server.listen(80)
+server.listen(80, "0.0.0.0", function () {
+  console.log('Server is running at http://127.0.0.1:80/')
+})
