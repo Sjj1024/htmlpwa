@@ -9,6 +9,8 @@ const appLink = 'https://dl.todesk.com/android/ToDesk_4.7.2.4.apk'
 const appName = 'Fortune Tiger'
 // 在pwa中打开默认跳转链接
 const pwaLink = 'https://www.cainiaojc.com/'
+// 底部菜单的跳转链接
+const menuLink = 'https://www.baidu.com'
 // loading逻辑
 const loading = () => {
   document.getElementById('loadbox').style.display = 'flex'
@@ -28,6 +30,13 @@ const loading = () => {
     document.getElementById('timer').innerHTML = showTime
   }, 1000)
 }
+
+// 点击底部的菜单图标跳转
+function gotoRef() {
+  //gotoRef()  a:href="javascript:gotoRef()"
+  location.href = menuLink
+}
+window.gotoRef = gotoRef
 
 // 下载app
 const downloadApp = () => {
