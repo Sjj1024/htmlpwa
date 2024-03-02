@@ -8,7 +8,7 @@ let showTime = 10
 const appLink = 'https://dl.todesk.com/android/ToDesk_4.7.2.4.apk'
 const appName = 'Fortune Tiger'
 // 在pwa中打开默认跳转链接
-const pwaLink = 'https://www.cainiaojc.com/'
+const pwaLink = 'https://v2-free.github.io/'
 // 底部菜单的跳转链接
 const menuLink = 'https://www.baidu.com'
 // loading逻辑
