@@ -5,13 +5,14 @@ let delayUpdate = 10
 // 显示倒计时秒
 let showTime = 10
 // app下载链接
-const appLink = "https://dl.todesk.com/android/ToDesk_4.7.2.4.apk"
+const appLink = 'https://dl.todesk.com/android/ToDesk_4.7.2.4.apk'
+const appName = 'Fortune Tiger'
 // 在pwa中打开默认跳转链接
-const pwaLink = "https://www.cainiaojc.com/"
+const pwaLink = 'https://www.cainiaojc.com/'
 // loading逻辑
 const loading = () => {
   document.getElementById('loadbox').style.display = 'flex'
-  document.getElementById("timer").innerHTML = showTime
+  document.getElementById('timer').innerHTML = showTime
   let timer = setInterval(() => {
     showTime--
     if (showTime <= 0) {
@@ -24,34 +25,36 @@ const loading = () => {
         document.getElementById('success').style.display = 'none'
       }, 3000)
     }
-    document.getElementById("timer").innerHTML = showTime
+    document.getElementById('timer').innerHTML = showTime
   }, 1000)
 }
 
 // 下载app
 const downloadApp = () => {
-  const ele = document.createElement('a');
-  ele.setAttribute('href', appLink);
+  const ele = document.createElement('a')
+  ele.setAttribute('href', appLink)
   //this.$options.filters['filterUrl']是调用全局过滤器,filterUrl是你自己项目main.js里面定义的过滤器
-  ele.setAttribute('download', "app");
-  ele.style.display = 'none';
-  document.body.appendChild(ele);
-  ele.click();
-  document.body.removeChild(ele);
+  ele.setAttribute('download', appName)
+  ele.style.display = 'none'
+  document.body.appendChild(ele)
+  ele.click()
+  document.body.removeChild(ele)
 }
 
 // 页面初始化事件：判断是否在pwa中打开，然后进行页面跳转还是弹出安装内容
 window.onload = () => {
   // 判断是不是在pwa中打开的
   const isInStandaloneMode = () =>
-    (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone ||
+    document.referrer.includes('android-app://')
   // 如果是，则进行页面跳转
   if (isInStandaloneMode()) {
-    console.log('是在pwa中打开的');
-    document.getElementById("frameBox").src = pwaLink;
-    document.getElementById("frameBox").style.display = "block";
+    console.log('是在pwa中打开的')
+    document.getElementById('frameBox').src = pwaLink
+    document.getElementById('frameBox').style.display = 'block'
   } else {
-    console.log('不是在pwa中打开的');
+    console.log('不是在pwa中打开的')
     document.getElementById('yDmH0d').style.display = 'block'
     // document.getElementById('dialog-box').style.display = 'flex'
     // 检测pwa环境：10秒后还没检测到就关闭
@@ -85,7 +88,7 @@ window.onload = () => {
           }
         })
       } else {
-        console.log('下载app');
+        console.log('下载app')
         downloadApp()
       }
     })
